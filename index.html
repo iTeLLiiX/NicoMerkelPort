@@ -8,16 +8,16 @@
       <meta name="description" content="Helping brands to stand out in the digital era. Located in Deutschland (Germany). Delivering modern web development with emphasis on user experience. No nonsense, always on the cutting edge."/>
       <meta property="og:title" content="Nico Merkel • Freelance Designer & Developer / Fullstack Developer"/>
       <meta property="og:description" content="Helping brands to stand out in the digital era. Located in Deutschland (Germany). Delivering modern web development with emphasis on user experience. No nonsense, always on the cutting edge."/>
-      <meta property="og:image" content="assets/Profilbild.jpg"/>
+      <meta property="og:image" content="https://iTeLLiiX.github.io/NicoMerkelPort/assets/Profilbild.jpg"/>
       <meta property="og:site_name" content="Nico Merkel"/>
-                              <meta property="og:locale" content="de"/>
-      <meta property="og:type" content="website"/>      <meta property="twitter:title" content="Nico Merkel • Freelance Designer & Developer / Fullstack Developer"/>
+      <meta property="og:locale" content="de"/>
+      <meta property="og:type" content="website"/>
+      <meta property="twitter:title" content="Nico Merkel • Freelance Designer & Developer / Fullstack Developer"/>
       <meta property="twitter:description" content="Helping brands to stand out in the digital era. Located in Deutschland (Germany). Delivering modern web development with emphasis on user experience. No nonsense, always on the cutting edge."/>
-      <meta property="twitter:image" content="assets/Profilbild.jpg"/>
+      <meta property="twitter:image" content="https://iTeLLiiX.github.io/NicoMerkelPort/assets/Profilbild.jpg"/>
       <meta name="twitter:card" content="summary_large_image"/>
       <meta name="google" content="notranslate"/>
-      <meta property="og:locale" content="de"/>
-      <link rel="canonical" href="https://github.com/iTeLLiiX/Portfolio"/>
+      <link rel="canonical" href="https://iTeLLiiX.github.io/NicoMerkelPort/"/>
 
       <link rel="preload" as="font" href="https://dennissnellenberg.com/assets/fonts/NeueMontreal-Regular.otf" type="font/otf" crossorigin="anonymous">
 
@@ -127,6 +127,7 @@
             margin-right: 15px;
             vertical-align: middle;
             border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
          }
          
          .profile-picture img {
@@ -135,6 +136,13 @@
             object-fit: cover;
             object-position: center;
             border-radius: 50%;
+            display: block;
+         }
+         
+         /* Hide any duplicate images */
+         .profile-picture::before,
+         .profile-picture::after {
+            display: none !important;
          }
          
          @media (max-width: 768px) {
