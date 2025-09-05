@@ -23,6 +23,97 @@
 
       <link href="https://dennissnellenberg.com/assets/css/normalize.css" rel="stylesheet">      <link href="https://dennissnellenberg.com/assets/css/locomotive-scroll.css" rel="stylesheet">      <link href="https://dennissnellenberg.com/assets/css/styleguide.css" rel="stylesheet">      <link href="https://dennissnellenberg.com/assets/css/components.css" rel="stylesheet">      <link href="https://dennissnellenberg.com/assets/css/style-new.css" rel="stylesheet">
       <style>
+         /* ===== RESPONSIVE DESIGN SYSTEM ===== */
+         
+         /* CSS Custom Properties for Responsive Design */
+         :root {
+            --mobile-breakpoint: 768px;
+            --tablet-breakpoint: 1024px;
+            --desktop-breakpoint: 1200px;
+            
+            --touch-target-min: 44px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-xxl: 4rem;
+            
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+         }
+         
+         /* ===== BASE RESPONSIVE STYLES ===== */
+         
+         /* Fluid Typography */
+         html {
+            font-size: 16px;
+         }
+         
+         @media (max-width: 480px) {
+            html { font-size: 14px; }
+         }
+         
+         @media (min-width: 1200px) {
+            html { font-size: 18px; }
+         }
+         
+         /* Touch-friendly Button Base */
+         .btn-click, .btn, button, a[role="button"] {
+            min-height: var(--touch-target-min);
+            min-width: var(--touch-target-min);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+         }
+         
+         /* ===== RESPONSIVE IMAGES ===== */
+         img {
+            max-width: 100%;
+            height: auto;
+         }
+         
+         /* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+         @media (prefers-reduced-motion: reduce) {
+            * {
+               animation-duration: 0.01ms !important;
+               animation-iteration-count: 1 !important;
+               transition-duration: 0.01ms !important;
+            }
+         }
+         
+         /* High contrast mode support */
+         @media (prefers-contrast: high) {
+            .cert-badge {
+               border: 2px solid #000;
+            }
+         }
+         
+         /* ===== PRINT STYLES ===== */
+         @media print {
+            .certifications-section {
+               background: white !important;
+               padding: 1rem 0;
+            }
+            
+            .cert-badge {
+               box-shadow: none;
+               border: 1px solid #ccc;
+               break-inside: avoid;
+            }
+         }
+         
          /* Certifications Section Styles */
          .certifications-section {
             padding: 6rem 0;
@@ -94,18 +185,21 @@
             margin-top: 3rem;
          }
          
-         @media (max-width: 768px) {
+         /* ===== RESPONSIVE BREAKPOINTS ===== */
+         
+         /* Mobile First: Base styles for mobile */
+         @media (max-width: 767px) {
             .certifications-section {
-               padding: 4rem 0;
+               padding: var(--spacing-xl) 0;
             }
             
             .badges-row {
-               grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-               gap: 1rem;
+               grid-template-columns: 1fr;
+               gap: var(--spacing-sm);
             }
             
             .cert-badge {
-               padding: 1.5rem;
+               padding: var(--spacing-md);
             }
             
             .badge-icon {
@@ -113,7 +207,68 @@
             }
             
             .cert-badge h4 {
-               font-size: 1rem;
+               font-size: var(--font-size-base);
+            }
+            
+            .certification-category h6 {
+               font-size: var(--font-size-lg);
+            }
+            
+            .profile-picture {
+               width: 50px;
+               height: 50px;
+               margin-right: var(--spacing-xs);
+            }
+            
+            /* Mobile Navigation Improvements */
+            .btn-click, .btn {
+               padding: var(--spacing-sm) var(--spacing-sm);
+               font-size: var(--font-size-sm);
+            }
+         }
+         
+         /* Tablet: 768px - 1023px */
+         @media (min-width: 768px) and (max-width: 1023px) {
+            .badges-row {
+               grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+               gap: var(--spacing-md);
+            }
+            
+            .cert-badge {
+               padding: var(--spacing-md);
+            }
+            
+            .profile-picture {
+               width: 55px;
+               height: 55px;
+            }
+         }
+         
+         /* Desktop: 1024px and up */
+         @media (min-width: 1024px) {
+            .badges-row {
+               grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+               gap: var(--spacing-lg);
+            }
+            
+            .cert-badge {
+               padding: var(--spacing-lg);
+            }
+            
+            .badge-icon {
+               font-size: 3rem;
+            }
+         }
+         
+         /* Large Desktop: 1200px and up */
+         @media (min-width: 1200px) {
+            .certifications-section {
+               padding: 5rem 0;
+            }
+            
+            .badges-row {
+               grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+               gap: var(--spacing-xl);
             }
          }
          
@@ -145,11 +300,80 @@
             display: none !important;
          }
          
-         @media (max-width: 768px) {
-            .profile-picture {
-               width: 50px;
-               height: 50px;
-               margin-right: 10px;
+         /* ===== RESPONSIVE IMAGE OPTIMIZATION ===== */
+         
+         /* Responsive images with srcset support */
+         .responsive-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+         }
+         
+         /* Hero section responsive images */
+         .hero-img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+         }
+         
+         /* Portfolio project images */
+         .project-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+         }
+         
+         /* ===== PERFORMANCE OPTIMIZATIONS ===== */
+         
+         /* Lazy loading for images */
+         img[loading="lazy"] {
+            opacity: 0;
+            transition: opacity 0.3s;
+         }
+         
+         img[loading="lazy"].loaded {
+            opacity: 1;
+         }
+         
+         /* ===== CROSS-BROWSER COMPATIBILITY ===== */
+         
+         /* Fallbacks for older browsers */
+         .cert-badge {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+         }
+         
+         /* Grid fallback for older browsers */
+         .badges-row {
+            display: -ms-grid;
+            display: grid;
+         }
+         
+         @supports not (display: grid) {
+            .badges-row {
+               display: -webkit-box;
+               display: -ms-flexbox;
+               display: flex;
+               -ms-flex-wrap: wrap;
+               flex-wrap: wrap;
+            }
+            
+            .cert-badge {
+               -webkit-box-flex: 1;
+               -ms-flex: 1 1 300px;
+               flex: 1 1 300px;
+               margin: 0.5rem;
             }
          }
       </style>
@@ -201,7 +425,7 @@
                 <div class="mouse-pos-list-image-bounce overlay">
                     <div class="float-image-wrap">
                                                 <li class="mouse-pos-list-image-inner development interaction visible">
-                            <div class="overlay overlay-image lazy" style="background-color: #F1F1F1; background-position: center center; background-repeat: no-repeat; background-size: cover;" data-bg="assets/CodeSnap.jpg" title="CodeSnap - Screenshot Tool"></div>                        </li>
+                            <div class="overlay overlay-image lazy" style="background-color: #F1F1F1; background-position: center center; background-repeat: no-repeat; background-size: cover;" data-bg="assets/CodeSnap.jpg" class="project-img" title="CodeSnap - Screenshot Tool"></div>                        </li>
                                                 <li class="mouse-pos-list-image-inner design development interaction visible">
                             <div class="overlay overlay-image lazy" style="background-color: #E0D9D1; background-position: center center; background-repeat: no-repeat; background-size: cover;" data-bg="assets/Screenshot 2025-08-07 103645.png" title="Thomas Scharli - Portfolio Website"></div>                        </li>
                                                 <li class="mouse-pos-list-image-inner design development interaction visible">
@@ -311,7 +535,11 @@
             </div>
             <div class="main-wrap" data-scroll-container><header class="section home-header theme-dark" data-scroll-section>
    <div class="overlay personal-image no-select once-in" data-scroll data-scroll-speed="-3" data-scroll-position="top">
-      <img src="assets/Profilbild.jpg"/>
+      <img src="assets/Profilbild.jpg" 
+           srcset="assets/Profilbild.jpg 1x, assets/Profilbild.jpg 2x" 
+           alt="Nico Merkel - Portfolio" 
+           class="hero-img"
+           loading="lazy" />
    </div>
    <div class="overlay get-height once-in once-in-secondary">
       <div class="hanger">
@@ -515,7 +743,7 @@
                <a href="https://code-snap-7sn1.vercel.app/" target="_blank" class="row">
                   <div class="flex-col">
                      <div class="tile-image">
-                        <div class="overlay overlay-image lazy" style="background-color: #F1F1F1; background-position: center center; background-repeat: no-repeat; background-size: cover;" data-bg="assets/CodeSnap.jpg" title="CodeSnap - Screenshot Tool"></div>                     </div>
+                        <div class="overlay overlay-image lazy" style="background-color: #F1F1F1; background-position: center center; background-repeat: no-repeat; background-size: cover;" data-bg="assets/CodeSnap.jpg" class="project-img" title="CodeSnap - Screenshot Tool"></div>                     </div>
                   </div>
                   <div class="flex-col">
                      <h4><span>CodeSnap</span></h4>
@@ -612,7 +840,7 @@
       <div class="row row-1" data-scroll data-scroll-speed="-1" data-scroll-direction="horizontal">
          <div class="flex-col">
             <div class="horizontal-single-item">
-               <div class="overlay lazy" style="background-position: center center; background-repeat: no-repeat; background-size: cover;" data-bg="assets/CodeSnap.jpg" title="CodeSnap - Screenshot Tool"></div>
+               <div class="overlay lazy" style="background-position: center center; background-repeat: no-repeat; background-size: cover;" data-bg="assets/CodeSnap.jpg" class="project-img" title="CodeSnap - Screenshot Tool"></div>
             </div>
          </div>
          <div class="flex-col">
@@ -634,7 +862,7 @@
       <div class="row row-2" data-scroll data-scroll-speed="1" data-scroll-direction="horizontal">
          <div class="flex-col">
             <div class="horizontal-single-item">
-               <div class="overlay lazy" style="background-position: center center; background-repeat: no-repeat; background-size: cover;" data-bg="assets/CodeSnap.jpg" title="CodeSnap - Screenshot Tool"></div>
+               <div class="overlay lazy" style="background-position: center center; background-repeat: no-repeat; background-size: cover;" data-bg="assets/CodeSnap.jpg" class="project-img" title="CodeSnap - Screenshot Tool"></div>
             </div>
          </div>
          <div class="flex-col">
@@ -748,7 +976,11 @@
         </g>
     </g>
 </svg></div>
-                                    <h2><span><div class="profile-picture"><img src="assets/Profilbild.jpg" alt="Nico Merkel" /></div> Let's work  </span><span>together</span></h2>
+                                    <h2><span><div class="profile-picture"><img src="assets/Profilbild.jpg" 
+                                                                                srcset="assets/Profilbild.jpg 1x, assets/Profilbild.jpg 2x" 
+                                                                                alt="Nico Merkel" 
+                                                                                class="responsive-img"
+                                                                                loading="lazy" /></div> Let's work  </span><span>together</span></h2>
                                 </div>
                             </div>
                             <div class="row">
