@@ -21,7 +21,36 @@
 
       <link rel="preload" as="font" href="index.html/assets/fonts/NeueMontreal-Regular.otf" type="font/otf" crossorigin="anonymous">
 
-      <link href="index.html/assets/css/normalize.css" rel="stylesheet">      <link href="index.html/assets/css/locomotive-scroll.css" rel="stylesheet">      <link href="index.html/assets/css/styleguide.css" rel="stylesheet">      <link href="index.html/assets/css/components.css" rel="stylesheet">      <link href="index.html/assets/css/style-new.css" rel="stylesheet">
+      <link href="https://dennissnellenberg.com/assets/css/normalize.css" rel="stylesheet">      <link href="https://dennissnellenberg.com/assets/css/locomotive-scroll.css" rel="stylesheet">      <link href="https://dennissnellenberg.com/assets/css/styleguide.css" rel="stylesheet">      <link href="https://dennissnellenberg.com/assets/css/components.css" rel="stylesheet">      <link href="https://dennissnellenberg.com/assets/css/style-new.css" rel="stylesheet">
+      <style>
+         /* Profile Picture Styles */
+         .profile-picture {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            vertical-align: middle;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+         }
+         
+         .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+         }
+         
+         @media (max-width: 768px) {
+            .profile-picture {
+               width: 50px;
+               height: 50px;
+               margin-right: 10px;
+            }
+         }
+      </style>
             <!-- Google Analytics removed for privacy -->
       
    </head>
@@ -197,10 +226,10 @@
 </div>   <div class="container medium">
       <div class="row once-in">
          <div class="flex-col">
-            <h1><span><div class="profile-picture"></div> Let's start a </span><span>project together</span></h1>
+            <h1><span><div class="profile-picture"><img src="assets/Profilbild.jpg" alt="Nico Merkel" /></div> Let's start a </span><span>project together</span></h1>
          </div>
          <div class="flex-col">
-            <div class="profile-picture"></div>
+            <div class="profile-picture"><img src="assets/Profilbild.jpg" alt="Nico Merkel" /></div>
             <div class="arrow"><?xml version="1.0" encoding="UTF-8"?>
 <svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>arrow-up-right</title>
@@ -217,7 +246,7 @@
       </div>
       <div class="row once-in">
          <div class="flex-col">
-            <form class="form" method="post" action="index.html#contact" enctype="multipart/form-data" novalidate>
+            <form class="form" method="post" action="mailto:nico.merkel@online.de" enctype="multipart/form-data" novalidate>
                <div class="website-field">
                   <label class="label" for="tel">Phone Number</label>
                   <input class="field" type="text" id="form-tel" name="tel" tabindex="-1">
